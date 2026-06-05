@@ -1,0 +1,33 @@
+name: research-assistant
+description: An AI agent that helps with research tasks
+
+tools:
+  - name: gmail_tool
+    type: email
+    scopes:
+      - read
+      - write
+      - delete
+      - contacts
+
+  - name: file_manager
+    type: file
+    permissions:
+      - read
+      - write
+      - delete
+
+  - name: web_browser
+    type: browser
+    access: unrestricted
+
+  - name: github_tool
+    type: github
+    scopes:
+      - read
+      - write
+      - secrets
+
+  - name: network_tool
+    type: network
+    access: full
