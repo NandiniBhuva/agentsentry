@@ -41,7 +41,6 @@ def print_findings(findings: list):
         ))
         return
 
-    # Build a rich table
     table = Table(
         box=box.ROUNDED,
         show_header=True,
@@ -77,7 +76,6 @@ def print_summary(score_result: dict, filepath: str):
     counts = score_result["counts"]
     total  = score_result["total"]
 
-    # Build the summary text
     summary = Text()
     summary.append(f"  Risk Score : ", style="dim")
     summary.append(f"{score}/100\n", style=color)
@@ -99,7 +97,6 @@ def print_summary(score_result: dict, filepath: str):
     summary.append(f"  File       : ", style="dim")
     summary.append(filepath, style="dim")
 
-    # Pick border color based on risk level
     border_color = {
         "CRITICAL": "red",
         "HIGH":     "orange1",
@@ -115,3 +112,42 @@ def print_summary(score_result: dict, filepath: str):
         expand=False
     ))
     console.print()
+
+
+def print_ai_analysis(ai_result: dict):
+    """Prints the AI-powered analysis section."""
+
+    console.print()
+    console.rule("[bold cyan]AI Security Analysis[/bold cyan]")
+
+    if not ai_result.get("success"):
+        console.print(f"[red]AI analysis failed:[/red] {ai_result.get('error')}")
+        return
+
+    if ai_result.get("summary"):
+        console.print(Panel(
+            ai_result["summary"],
+            title="[bold cyan]Executive Summary[/bold cyan]",
+            border_style="cyan"
+        ))
+
+    if ai_result.get("finding_analysis"):
+        console.print(Panel(
+            ai_result["finding_analysis"],
+            title="[bold yellow]Finding Analysis + Fixes[/bold yellow]",
+            border_style="yellow"
+        ))
+
+    if ai_result.get("missed_risks"):
+        console.print(Panel(
+            ai_result["missed_risks"],
+            title="[bold orange1]Missed Risks[/bold orange1]",
+            border_style="orange1"
+        ))
+
+    if ai_result.get("recommendation"):
+        console.print(Panel(
+            f"[bold]→[/bold] {ai_result['recommendation']}",
+            title="[bold green]Overall Recommendation[/bold green]",
+            border_style="green"
+        ))
