@@ -55,43 +55,9 @@ Get a free Groq API key at [console.groq.com](https://console.groq.com) — no c
 
 ## Example Output
 
-**Rule-based scan:**
-╭──────────────────────────────────────────╮
-│ agentwatch — AI Agent Permission Auditor │
-╰──────────────────────────────────────────╯
-Scanning: sample_agent.yaml
-╭──────────────┬────────────────────────┬─────────────────────────────────────────────────╮
-│   Severity   │ Tool                   │ Finding                                         │
-├──────────────┼────────────────────────┼─────────────────────────────────────────────────┤
-│     HIGH     │ gmail_tool             │ Tool has write/destructive permissions: write,   │
-│              │                        │ delete                                          │
-│   CRITICAL   │ web_browser            │ Tool has overly broad scope — found: unrestricted│
-│   CRITICAL   │ file + network         │ File system + network access together = data     │
-│              │                        │ exfiltration risk.                              │
-│   CRITICAL   │ github + secrets       │ GitHub + secrets access = secret leakage risk.  │
-╰──────────────┴────────────────────────┴─────────────────────────────────────────────────╯
-╭────────────── Audit Result ──────────────╮
-│   Risk Score : 100/100                   │
-│   Risk Level : CRITICAL                  │
-│   Findings   : 8 total (4 CRITICAL, 4 HIGH) │
-╰──────────────────────────────────────────╯
+**Rule-based scan and with `--ai` flag, additionally outputs:**
+<img width="1470" height="956" alt="Screenshot 2026-06-06 at 3 32 02 PM" src="https://github.com/user-attachments/assets/a5bf68d4-142b-410d-92ab-17a98488a33a" />
 
-**With `--ai` flag, additionally outputs:**
-────────────────── AI Security Analysis ──────────────────
-Executive Summary:
-The research-assistant AI agent configuration poses significant security risks,
-including data exfiltration, phishing, and secret leakage...
-Finding Analysis + Fixes:
-
-[HIGH] gmail_tool: The gmail_tool has permissions to write and delete emails,
-which could be used to send spam or delete important emails...
-Fix: Restrict gmail_tool permissions to only "read" scope...
-
-Overall Recommendation:
-Immediately review and restrict the permissions and scopes of all agent tools
-to prevent potential security risks and data breaches.
-
----
 
 ## Supported Config Formats
 
