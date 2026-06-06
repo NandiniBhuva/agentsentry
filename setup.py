@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="agentwatch",
+    name="agentsentry",
     version="0.1.0",
     description="Audit AI agent config files for dangerous permissions and risky tool combinations",
     author="Nandini Bhuva",
@@ -12,7 +12,7 @@ setup(
     ],
     entry_points={
         "console_scripts": [
-            "agentwatch=agentwatch.cli:main",
+            "agentsentry=agentsentry.cli:main",
         ],
     },
     python_requires=">=3.9",

@@ -22,10 +22,10 @@ def _severity_badge(severity: str) -> Text:
 
 
 def print_header(filepath: str):
-    """Prints the agentwatch banner and the file being scanned."""
+    """Prints the agentsentry banner and the file being scanned."""
     console.print()
     console.print(Panel.fit(
-        "[bold cyan]agentwatch[/bold cyan] [dim]— AI Agent Permission Auditor[/dim]",
+        "[bold cyan]agentsentry[/bold cyan] [dim]— AI Agent Permission Auditor[/dim]",
         border_style="cyan"
     ))
     console.print(f"[dim]Scanning:[/dim] [bold]{filepath}[/bold]\n")

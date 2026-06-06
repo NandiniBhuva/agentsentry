@@ -7,7 +7,7 @@
 
 AI agents are getting powerful enough to read your email, write to your database, and push code to GitHub. But most agent frameworks hand out permissions with no guardrails.
 
-**agentwatch** is a CLI tool that audits your agent config files and flags:
+**agentsentry** is a CLI tool that audits your agent config files and flags:
 - 🔴 Overly broad scopes (`full`, `unrestricted`, `admin`, `*`)
 - 🟠 Write/destructive permissions (`delete`, `write`, `drop`, `send`)
 - 🔴 Dangerous tool combinations (file + network = exfiltration risk)
@@ -22,8 +22,8 @@ Think of it as `npm audit` but for AI agent permissions.
 ## Install
 
 ```bash
-git clone https://github.com/NandiniBhuva/agentwatch.git
-cd agentwatch
+git clone https://github.com/NandiniBhuva/agentsentry.git
+cd agentsentry
 python3 -m venv venv && source venv/bin/activate
 pip install -e .
 ```
@@ -31,7 +31,7 @@ pip install -e .
 Or directly via pip:
 
 ```bash
-pip install git+https://github.com/NandiniBhuva/agentwatch.git
+pip install git+https://github.com/NandiniBhuva/agentsentry.git
 ```
 
 ---
@@ -40,13 +40,13 @@ pip install git+https://github.com/NandiniBhuva/agentwatch.git
 
 ### Basic audit (rule-based, no API key needed)
 ```bash
-agentwatch audit your_agent.yaml
+agentsentry audit your_agent.yaml
 ```
 
 ### Full AI-powered audit
 ```bash
 export GROQ_API_KEY="your-key-here"
-agentwatch audit your_agent.yaml --ai
+agentsentry audit your_agent.yaml --ai
 ```
 
 Get a free Groq API key at [console.groq.com](https://console.groq.com) — no credit card required.
@@ -61,7 +61,7 @@ Get a free Groq API key at [console.groq.com](https://console.groq.com) — no c
 
 ## Supported Config Formats
 
-agentwatch parses agent configs from any framework that uses YAML or JSON:
+agentsentry parses agent configs from any framework that uses YAML or JSON:
 
 | Framework | Config Format |
 |---|---|
@@ -102,4 +102,4 @@ agentwatch parses agent configs from any framework that uses YAML or JSON:
 | `0` | LOW or MEDIUM risk — safe to proceed |
 | `1` | HIGH or CRITICAL risk — action required |
 
-Exit code `1` on HIGH/CRITICAL makes agentwatch usable in CI/CD pipelines to block deployments of over-permissioned agents.
+Exit code `1` on HIGH/CRITICAL makes agentsentry usable in CI/CD pipelines to block deployments of over-permissioned agents.

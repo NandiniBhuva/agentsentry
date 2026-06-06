@@ -1,4 +1,4 @@
-from agentwatch.cli import main
+from agentsentry.cli import main
 
 if __name__ == "__main__":
     main()

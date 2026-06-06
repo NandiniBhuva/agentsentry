@@ -1,11 +1,11 @@
 import argparse
 import sys
-from agentwatch.parser import load_agent_config
-from agentwatch.analyzers.permissions import analyze_permissions
-from agentwatch.analyzers.combinations import analyze_combinations
-from agentwatch.analyzers.scoring import calculate_score
-from agentwatch.analyzers.ai_analyzer import analyze_with_ai
-from agentwatch.report import (
+from agentsentry.parser import load_agent_config
+from agentsentry.analyzers.permissions import analyze_permissions
+from agentsentry.analyzers.combinations import analyze_combinations
+from agentsentry.analyzers.scoring import calculate_score
+from agentsentry.analyzers.ai_analyzer import analyze_with_ai
+from agentsentry.report import (
     print_header, print_findings,
     print_summary, print_ai_analysis
 )
@@ -57,7 +57,7 @@ def cmd_audit(args):
 
 def main():
     parser = argparse.ArgumentParser(
-        prog="agentwatch",
+        prog="agentsentry",
         description="Audit AI agent config files for dangerous permissions and risky tool combinations."
     )
 
